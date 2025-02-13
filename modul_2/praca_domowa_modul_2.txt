@@ -1,0 +1,7 @@
+Napisz wiadomość, którą można by wysłać do Twojego managera odnośnie pomysłu wprowadzenia testów automatycznych w projekcie.
+
+Cześć,
+Po poniedziałkowej sesji testów regresji pomyślałam, że może warto byłoby rozważyć wprowadzenie testów automatycznych w naszym projekcie. 3 godziny przeznaczone na te testy niestety zwykle okazują się niewystarczające, a sesje często obejmują te same obszary systemu. Oczywiście, początkowo wprowadzenie testów automatycznych może wydawać się drogie i pracochłonne, ale patrząc długoterminowo, myślę że byłoby to świetne rozwiązanie. Wprowadzenie testów automatycznych w kilku obszarach pozwoliłoby nam na szybsze przeprowadzanie testów regresji, a zaoszczędzony czas moglibyśmy poświęcić na testowanie funkcjonalności, które były mniej testowane lub pracę nad bieżącymi zadaniami. Ponadto, przeprowadzając po raz kolejny te same testy, testerzy mogą nie zauważyć już pewnych błędów, które z kolei mogą zostać wyłapane przez testy automatyczne.
+Co myślisz o takim rozwiązaniu? Jeśli chcesz, mogę przygotować projekt testów automatycznych i chętnie Ci go przedstawię.
+Pozdrawiam,
+Marta

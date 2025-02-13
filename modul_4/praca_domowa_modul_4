@@ -1,0 +1,42 @@
+1. Manualne frontendu
+2. Automatyczne frontendu
+3. Wydajności
+4. Bezpieczeństwa
+
+Dobierz zadania, jakie mogłyby testować (np. zmiana sposobu logowania w aplikacji).
+Dobierz narzędzia, które będą potrzebne, aby je wykonać.
+
+Testy manualne frontendu
+Zadania:
+- wprowadzenie poprawnych danych logowania
+- wprowadzenie niepoprawnych danych logowania
+- walidacje pól (np. brak hasła, za długie lub za krótkie hasło)
+- testy na różnych przeglądarkach - testy na różnych urządzeniach
+- logowanie za pomocą konta Google/Facebook
+Narzędzia: - DevTools
+
+Testy automatyczne frontendu
+Zadania:
+- logowanie z poprawnymi danymi -> sprawdzenie poprawnego wyświetlania loginu użytkownika po zalogowaniu
+- logowanie z niepoprawnymi danymi -> sprawdzenie czy wyświetlają się prawidłowe błędy
+- sprawdzenie widoczności elementów interfejsu
+Narzędzia:
+- Selenium/Playwright
+- PyCharm
+- DevTools
+
+Testy wydajności:
+Zadania:
+- Symulacja logowania przez wielu użytkowników w krótkim czasie
+- Test czasu ładowania strony logowania przy dużej licznie równoczesnych użytkowników
+Narzędzia:
+- JMeter
+
+Testy bezpieczeństwa:
+Zadania:
+- testowanie odporności na ataki typu brute force (czy system blokuje logowanie po np. 5 nieudanych próbach)
+- testy podatności na SQL injection
+- sprawdzenie czy tokeny sesji wygasają poprawnie po określonym czasie braku aktywności
+- sprawdzenie czy dane sesji są odpowiednio zaszyfrowane
+Narzędzia:
+- OWASP ZAP
