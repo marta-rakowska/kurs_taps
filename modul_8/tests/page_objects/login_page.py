@@ -1,8 +1,5 @@
-import time
-
 from helpers.support_functions import *
 from helpers.DataGenerator import *
-from time import sleep
 
 username = '//*[@id="username"]'
 password = '//*[@id="password"]'
@@ -10,6 +7,11 @@ login_button = '//*[@id="customer_login"]/div[1]/form/p[3]/button'
 close_message_button = '/html/body/p/a'
 random_password = 'test'
 error_info = '//*[@id="content"]/div/div[1]/ul'
+lost_password_button = '///*[@id="customer_login"]/div[1]/form/p[4]/a'
+email = '//*[@id="reg_email"]'
+new_user_email = 'xirawep342@framitag.com'
+register_button = '//*[@id="customer_login"]/div[2]/form/p[3]/button'
+
 
 proper_email1 = 'cotaga1249@maillei.net'
 proper_password1 = 'VRrMhK8MqFyd'
@@ -53,6 +55,26 @@ def incorrect_login(driver_instance):
     except StaleElementReferenceException:
         print('ERROR Wrong user/password')
         return True
+
+
+def go_to_lost_password_page(driver_instance):
+    wait_for_visibility_of_element(driver_instance, lost_password_button)
+    elem = driver_instance.find_element(By.XPATH, lost_password_button)
+    elem.click()
+
+
+def register_new_user(driver_instance):
+    wait_for_visibility_of_element(driver_instance, email)
+    elem = driver_instance.find_element(By.XPATH, email)
+    elem.send_keys(new_user_email)
+    elem2 = driver_instance.find_element(By.XPATH, register_button)
+    elem2.click()
+
+
+
+
+
+
 
 
 

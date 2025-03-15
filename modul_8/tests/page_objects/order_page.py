@@ -1,7 +1,6 @@
 from helpers.support_functions import *
 from selenium.webdriver.support.select import Select
 from helpers.DataGenerator import *
-from time import sleep
 
 name = '//*[@id="billing_first_name"]'
 surname = '//*[@id="billing_last_name"]'
@@ -12,9 +11,19 @@ city = '//*[@id="billing_city"]'
 phone = '//*[@id="billing_phone"]'
 email = '//*[@id="billing_email"]'
 place_order_button = '//*[@id="place_order"]'
+show_login_button = '//*[@id="post-8"]/div/div/div[2]/div/a'
+username_input = '//*[@id="username"]'
+password_input = '//*[@id="password"]'
+login_button = '//*[@id="post-8"]/div/div/form[1]/p[4]/button'
+show_coupon_button = '//*[@id="post-8"]/div/div/div[3]/div/a'
+coupon_input = '//*[@id="coupon_code"]'
+submit_coupon_button = '//*[@id="post-8"]/div/div/form[2]/p[3]/button'
 
 valid_postcode = '00-123'
 invalid_postcode = 'abc'
+
+proper_email = 'cotaga1249@maillei.net'
+proper_password = 'VRrMhK8MqFyd'
 
 
 def form_add_proper_name(driver_instance):
