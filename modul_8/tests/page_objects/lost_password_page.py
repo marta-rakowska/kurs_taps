@@ -7,7 +7,7 @@ reset_password_button = '//*[@id="post-9"]/div/div/form/p[3]/button'
 password_reset_alert = '//*[@id="post-9"]/div/div/div'
 
 
-def my_account_header_visible(driver_instance):
+def lost_password_header_visible(driver_instance):
     wait_for_visibility_of_element(driver_instance, lost_password_header)
     elem = driver_instance.find_element(By.XPATH, lost_password_header)
     header_text = 'Zapomniane hasło'
@@ -21,6 +21,8 @@ def reset_password(driver_instance):
     wait_for_visibility_of_element(driver_instance, user_login_input)
     elem = driver_instance.find_element(By.XPATH, user_login_input)
     elem.send_keys(user_login)
+    elem2 = driver_instance.find_element(By.XPATH, reset_password_button)
+    elem2.click()
 
 
 def password_reset_alert_visible(driver_instance):

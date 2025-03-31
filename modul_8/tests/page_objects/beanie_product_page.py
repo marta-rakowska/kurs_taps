@@ -1,5 +1,6 @@
 from helpers.support_functions import *
 
+beanie_page_header = '//*[@id="product-46"]/div[2]/h1'
 add_to_cart_button = '//*[@id="product-46"]/div[2]/form/button'
 added_to_cart_alert = '//*[@id="content"]/div/div[1]/div'
 quantity_input = '//*[@id="quantity_67d57db04ff54"]'
@@ -16,10 +17,21 @@ author_email_input = '//*[@id="email"]'
 submit_button = '//*[@id="submit"]'
 add_review_error_message = '//*[@id="error-page"]/div'
 
+
 review_text = "Good quality. Beautiful color."
 author_name = 'Cotaga'
 author_email = 'cotaga1249@maillei.net'
 add_review_error_message_text = 'proszę wypełnić wymagane pola'
+
+
+def beanie_header_visible(driver_instance):
+    wait_for_visibility_of_element(driver_instance, beanie_page_header)
+    elem = driver_instance.find_element(By.XPATH, beanie_page_header)
+    header_text = 'Beanie'
+    if elem.text == header_text:
+        return True
+    else:
+        return False
 
 
 def change_quantity_to_2(driver_instance):
