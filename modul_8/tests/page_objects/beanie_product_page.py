@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from helpers.support_functions import *
 
 beanie_page_header = '//*[@id="product-46"]/div[2]/h1'
@@ -16,9 +18,10 @@ author_name_input = '//*[@id="author"]'
 author_email_input = '//*[@id="email"]'
 submit_button = '//*[@id="submit"]'
 add_review_error_message = '//*[@id="error-page"]/div'
+beanie_color = '//*[@id="tab-additional_information"]/table/tbody/tr/td/p'
+comment_awaiting_approval = '//*[@id="comment-2477"]/div/p/em'
+added_review = '//*[@id="comment-2477"]/div'
 
-
-review_text = "Good quality. Beautiful color."
 author_name = 'Cotaga'
 author_email = 'cotaga1249@maillei.net'
 add_review_error_message_text = 'proszę wypełnić wymagane pola'
@@ -70,7 +73,11 @@ def go_to_additional_information_tab(driver_instance):
 def additional_information_tab_header_visible(driver_instance):
     wait_for_visibility_of_element(driver_instance, additional_information_tab_header)
     elem = driver_instance.find_element(By.XPATH, additional_information_tab_header)
-    elem.is_displayed()
+    tab_header_text = 'Informacje dodatkowe'
+    if elem.text == tab_header_text:
+        return True
+    else:
+        return False
 
 
 def go_to_reviews_tab(driver_instance):
@@ -79,9 +86,13 @@ def go_to_reviews_tab(driver_instance):
 
 
 def reviews_tab_header_visible(driver_instance):
-    wait_for_visibility_of_element(driver_instance, reviews_tab_header)
-    elem = driver_instance.find_element(By.XPATH, reviews_tab_header)
-    elem.is_displayed()
+    wait_for_visibility_of_element (driver_instance, reviews_tab_header)
+    elem = driver_instance.find_element (By.XPATH, reviews_tab_header)
+    reviews_tab_header_text = 'Opinie'
+    if elem.text in reviews_tab_header_text:
+        return True
+    else:
+        return False
 
 
 def add_five_stars_rating(driver_instance):
@@ -91,7 +102,7 @@ def add_five_stars_rating(driver_instance):
 
 def add_review_text(driver_instance):
     elem = driver_instance.find_element(By.XPATH, review_input)
-    elem.send_keys(review_text)
+    elem.send_keys(str(datetime.now()))
 
 
 def add_author_name(driver_instance):
@@ -156,6 +167,16 @@ def add_review_error_message_visible(driver_instance):
         return True
     else:
         return False
+
+
+def added_comment_visible(driver_instance):
+    wait_for_visibility_of_element_by_class(driver_instance, 'comment_container')
+    elem = driver_instance.find_element(By.CLASS_NAME, 'comment_container')
+    if elem.is_displayed():
+        return True
+    else:
+        return False
+
 
 
 
