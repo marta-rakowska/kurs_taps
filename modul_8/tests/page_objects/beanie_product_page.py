@@ -1,11 +1,12 @@
 from datetime import datetime
+from selenium.webdriver.common.keys import Keys
 
 from helpers.support_functions import *
 
 beanie_page_header = '//*[@id="product-46"]/div[2]/h1'
 add_to_cart_button = '//*[@id="product-46"]/div[2]/form/button'
 added_to_cart_alert = '//*[@id="content"]/div/div[1]/div'
-quantity_input = '//*[@id="quantity_67d57db04ff54"]'
+quantity_input = '//*[@id="quantity_67fd3ea87c150"]'
 description_tab = '//*[@id="tab-title-description"]/a'
 description_tab_header = '//*[@id="tab-description"]/h2'
 additional_information_tab = '//*[@id="tab-title-additional_information"]/a'
@@ -17,10 +18,11 @@ review_input = '//*[@id="comment"]'
 author_name_input = '//*[@id="author"]'
 author_email_input = '//*[@id="email"]'
 submit_button = '//*[@id="submit"]'
-add_review_error_message = '//*[@id="error-page"]/div'
+add_review_error_message = 'wp-die-message'
 beanie_color = '//*[@id="tab-additional_information"]/table/tbody/tr/td/p'
 comment_awaiting_approval = '//*[@id="comment-2477"]/div/p/em'
 added_review = '//*[@id="comment-2477"]/div'
+
 
 author_name = 'Cotaga'
 author_email = 'cotaga1249@maillei.net'
@@ -39,8 +41,9 @@ def beanie_header_visible(driver_instance):
 
 def change_quantity_to_2(driver_instance):
     elem = driver_instance.find_element(By.XPATH, quantity_input)
-    elem.clear()
-    elem.send_keys(2)
+    # elem.clear()
+    # elem.send_keys(2)
+    elem.send_keys(Keys.ARROW_UP)
 
 
 def add_to_cart(driver_instance):
@@ -161,9 +164,9 @@ def add_review_without_author_email(driver_instance):
 
 
 def add_review_error_message_visible(driver_instance):
-    wait_for_visibility_of_element(driver_instance, add_review_error_message)
-    elem = driver_instance.find_element(By.XPATH, add_review_error_message)
-    if add_review_error_message_text in elem.text:
+    wait_for_visibility_of_element_by_class(driver_instance, add_review_error_message)
+    elem = driver_instance.find_element(By.CLASS_NAME, add_review_error_message)
+    if elem.is_displayed():
         return True
     else:
         return False
@@ -176,6 +179,40 @@ def added_comment_visible(driver_instance):
         return True
     else:
         return False
+
+
+# def accept_alert(driver_instance):
+#     try:
+#         alert = driver_instance.switch_to.alert
+#         alert.accept()
+#         return 'Alert accepted'
+#     except NoAlertPresentException:
+#         return False
+
+
+def missing_rating_alert_displayed(driver_instance):
+    try:
+        alert = driver_instance.switch_to.alert
+        alert_text = 'Proszę wybrać ocenę'
+        if alert_text in alert.text:
+            return True
+    except NoAlertPresentException:
+        return False
+
+
+def two_products_added_to_cart_info_displayed(driver_instance):
+    wait_for_visibility_of_element(driver_instance, added_to_cart_alert)
+    elem = driver_instance.find_element(By.XPATH, added_to_cart_alert)
+    info_text = '2 × „Beanie” zostało dodanych do koszyka.'
+    if info_text in elem.text:
+        return True
+    else:
+        return False
+
+
+
+
+
 
 
 
