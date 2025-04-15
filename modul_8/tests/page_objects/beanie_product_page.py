@@ -6,7 +6,7 @@ from helpers.support_functions import *
 beanie_page_header = '//*[@id="product-46"]/div[2]/h1'
 add_to_cart_button = '//*[@id="product-46"]/div[2]/form/button'
 added_to_cart_alert = '//*[@id="content"]/div/div[1]/div'
-quantity_input = '//*[@id="quantity_67fd3ea87c150"]'
+quantity_input = 'quantity'
 description_tab = '//*[@id="tab-title-description"]/a'
 description_tab_header = '//*[@id="tab-description"]/h2'
 additional_information_tab = '//*[@id="tab-title-additional_information"]/a'
@@ -31,7 +31,7 @@ add_review_error_message_text = 'proszę wypełnić wymagane pola'
 
 def beanie_header_visible(driver_instance):
     wait_for_visibility_of_element(driver_instance, beanie_page_header)
-    elem = driver_instance.find_element(By.XPATH, beanie_page_header)
+    elem = driver_instance.find_element(By.NAME, beanie_page_header)
     header_text = 'Beanie'
     if elem.text == header_text:
         return True
@@ -40,7 +40,7 @@ def beanie_header_visible(driver_instance):
 
 
 def change_quantity_to_2(driver_instance):
-    elem = driver_instance.find_element(By.XPATH, quantity_input)
+    elem = driver_instance.find_element(By.NAME, quantity_input)
     # elem.clear()
     # elem.send_keys(2)
     elem.send_keys(Keys.ARROW_UP)
@@ -89,8 +89,8 @@ def go_to_reviews_tab(driver_instance):
 
 
 def reviews_tab_header_visible(driver_instance):
-    wait_for_visibility_of_element (driver_instance, reviews_tab_header)
-    elem = driver_instance.find_element (By.XPATH, reviews_tab_header)
+    wait_for_visibility_of_element(driver_instance, reviews_tab_header)
+    elem = driver_instance.find_element(By.XPATH, reviews_tab_header)
     reviews_tab_header_text = 'Opinie'
     if elem.text in reviews_tab_header_text:
         return True

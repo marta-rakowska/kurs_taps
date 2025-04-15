@@ -17,22 +17,21 @@ class Tests(unittest.TestCase):
 
     def test1_add_item_to_cart(self):
         main_page.add_item_to_cart(self.driver)
-        main_page.go_to_cart_page(self.driver)
+        main_page.go_to_cart_under_item(self.driver)
         self.assertTrue(cart_page.check_item_in_cart(self.driver))
 
     def test2_remove_item_from_cart(self):
         main_page.add_item_to_cart(self.driver)
-        main_page.go_to_cart_page(self.driver)
+        main_page.go_to_cart_under_item(self.driver)
         self.assertTrue(cart_page.check_item_in_cart(self.driver))
         cart_page.remove_item_from_cart(self.driver)
         self.assertTrue(cart_page.check_item_not_in_cart(self.driver))
 
     def test3_change_amount_to_2(self):
         main_page.add_item_to_cart(self.driver)
-        main_page.go_to_cart_page(self.driver)
+        main_page.go_to_cart_under_item(self.driver)
         cart_page.change_quantity_to_2(self.driver)
-        cart_page.update_cart_button(self.driver)
-        self.assertTrue(cart_page.check_number_of_items_in_cart(self.driver))
+        self.assertTrue(cart_page.cart_updated_alert_displayed(self.driver))
 
     def test5_calculate_shipping(self):
         main_page.add_item_to_cart(self.driver)

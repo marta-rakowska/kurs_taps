@@ -1,5 +1,6 @@
 from helpers.support_functions import *
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.common.keys import Keys
 
 
 cart_page_header = '//*[@id="post-7"]/header/h1'
@@ -9,8 +10,8 @@ submit_cart = '//*[@id="post-7"]/div/div/div[2]/div/div/a'
 coupon_code_input = '//*[@id="coupon_code"]'
 apply_coupon_button = '//*[@id="post-7"]/div/div/form/table/tbody/tr[2]/td/div/button'
 update_cart_button = '//*[@id="post-7"]/div/div/form/table/tbody/tr[2]/td/button'
-cart_updated_alert = '//*[@id="post-7"]/div/div/div[1]/div'
-quantity_input = '//*[@id="quantity_67db26be7c97a"]'
+cart_updated_alert = 'woocommerce-message'
+quantity_input = '/html/body/div[1]/div[2]/div/div[2]/main/article/div/div/form/table/tbody/tr[1]/td[5]/div/input'
 calculate_shipping_button = '//*[@id="post-7"]/div/div/div[2]/div/table/tbody/tr[2]/td/form/a'
 shipping_country_dropdown = '//*[@id="select2-calc_shipping_country-container"]'
 shipping_country_dropdown_list = '//*[@id="select2-calc_shipping_country-results"]'
@@ -77,24 +78,21 @@ def click_apply_coupon(driver_instance):
 
 
 def change_quantity_to_2(driver_instance):
-    wait_for_visibility_of_element(driver_instance, quantity_input)
     elem = driver_instance.find_element(By.XPATH, quantity_input)
-    elem.clear()
-    elem.send_keys('2')
-    value = '2'
-    if value == elem.get_attribute('value'):
+    # elem.clear()
+    # elem.send_keys(2)
+    elem.send_keys(Keys.ARROW_UP)
+    elem.send_keys(Keys.ENTER)
+
+
+def cart_updated_alert_displayed(driver_instance):
+    wait_for_visibility_of_element_by_class(driver_instance, cart_updated_alert)
+    elem = driver_instance.find_element(By.CLASS_NAME, cart_updated_alert)
+    alert_text = 'Koszyk zaktualizowany.'
+    if alert_text in elem.text:
         return True
     else:
         return False
-
-
-def update_cart(driver_instance):
-    wait_for_visibility_of_element(driver_instance, update_cart_button)
-    elem = driver_instance.find_element(By.XPATH, update_cart_button)
-    elem.click()
-    wait_for_invisibility_of_element(driver_instance, cart_updated_alert)
-    elem2 = driver_instance.find_element(By.XPATH, cart_updated_alert)
-    elem2.is_displayed()
 
 
 def click_calculate_shipping_button(driver_instance):
