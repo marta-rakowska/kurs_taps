@@ -59,9 +59,13 @@ def incorrect_login(driver_instance):
     elem2.click()
     elem3 = driver_instance.find_element(By.XPATH, login_button)
     elem3.click()
+
+
+def wrong_user_or_password_error_displayed(driver_instance):
     try:
         wait_for_visibility_of_element(driver_instance, error_info)
-        return elem3.is_displayed()
+        elem = driver_instance.find_element(By.XPATH, error_info)
+        return elem.is_displayed()
     except StaleElementReferenceException:
         print('ERROR Wrong user/password')
         return True

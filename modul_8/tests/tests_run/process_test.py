@@ -1,3 +1,4 @@
+import time
 import unittest
 from selenium import webdriver
 from modul_8.config.test_settings import TestSettings

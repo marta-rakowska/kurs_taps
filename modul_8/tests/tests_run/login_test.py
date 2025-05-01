@@ -24,7 +24,8 @@ class Tests(unittest.TestCase):
 
     def test3_incorrect_login(self):
         main_page.go_to_login_page(self.driver)
-        self.assertTrue(login_page.incorrect_login(self.driver))
+        login_page.incorrect_login(self.driver)
+        self.assertTrue(login_page.wrong_user_or_password_error_displayed(self.driver))
 
     def test4_remind_password(self):
         main_page.go_to_login_page(self.driver)
