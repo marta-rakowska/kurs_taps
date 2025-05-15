@@ -36,7 +36,7 @@ def go_to_beanie_page(driver_instance):
 
 
 def go_to_hoodie_page(driver_instance):
-    elem = driver_instance.find_element (By.XPATH, close_message_button)
+    elem = driver_instance.find_element(By.XPATH, close_message_button)
     elem.click()
     wait_for_visibility_of_element(driver_instance, hoodie_product_name)
     elem2 = driver_instance.find_element(By.XPATH, hoodie_product_name)

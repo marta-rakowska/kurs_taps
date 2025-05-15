@@ -46,3 +46,7 @@ class Tests(unittest.TestCase):
         shop_page.go_to_second_page(self.driver)
         shop_page.go_to_first_page(self.driver)
         self.assertTrue(shop_page.first_page_visible(self.driver))
+
+
+if __name__ == "__main__":
+    unittest.main()

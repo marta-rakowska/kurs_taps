@@ -2,7 +2,6 @@ from helpers.support_functions import *
 from helpers.DataGenerator import *
 from selenium.common.exceptions import StaleElementReferenceException
 
-# order_confirmation_page_header = '//*[@id="post-8"]/header/h1'
 order_confirmation_page_header = 'entry-title'
 
 

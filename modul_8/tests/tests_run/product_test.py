@@ -77,7 +77,8 @@ class Tests(unittest.TestCase):
         self.assertTrue(beanie_product_page.two_products_added_to_cart_info_displayed(self.driver))
 
 
-
+if __name__ == "__main__":
+    unittest.main()
 
 
 

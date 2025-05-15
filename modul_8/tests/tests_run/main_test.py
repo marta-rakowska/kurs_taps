@@ -40,6 +40,10 @@ class Tests(unittest.TestCase):
         self.assertTrue(main_page.no_products_found_info_displayed(self.driver))
 
 
+if __name__ == "__main__":
+    unittest.main()
+
+
 
 
 
