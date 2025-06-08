@@ -1,0 +1,26 @@
+{
+  "server": {
+    "host": "localhost",
+    "port": 4444
+  },
+  "grid": {
+    "maxSession": 10,
+    "timeout": 300
+  },
+  "node": {
+    "maxSessions": 10,
+    "detect-drivers": false
+  },
+  "webdriver": {
+    "chrome": {
+      "driverPath": "/path/to/chromedriver",
+      "maxInstances": 8,
+      "platformName": "MAC"
+    },
+    "firefox": {
+      "driverPath": "/path/to/geckodriver",
+      "maxInstances": 2,
+      "platformName": "MAC"
+    }
+  }
+}

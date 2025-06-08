@@ -1,12 +1,16 @@
 import unittest
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from modul_7.config.test_settings import TestSettings
 from modul_7.tests.page_objects import main_page, checkboxes_page, hovers_page, users_page, inputs_page, dropdown_page, add_remove_page
 
 
 class Tests(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.selenium_grid_url = 'http://192.168.3.90:4444/wd/hub'
+        self.chrome_options = Options()
+        self.driver = webdriver.Remote(options=self.chrome_options, command_executor=self.selenium_grid_url)
+        # self.driver = webdriver.Chrome()
         self.url = TestSettings.page_url
         self.driver.get(self.url)
         self.driver.maximize_window()

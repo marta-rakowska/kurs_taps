@@ -1,0 +1,2 @@
+To run the json file use:
+java -jar selenium-server-4.33.0.jar standalone --config praca_domowa_modul_9.json
